@@ -1,0 +1,73 @@
+﻿<Window
+    x:Class="Add2PathGUI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Add2PathGUI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="快速添加环境变量"
+    Width="350"
+    Height="250"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <StackPanel Orientation="Vertical">
+        <TextBox
+            x:Name="FolderPathTextBox"
+            Height="100"
+            Margin="10"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top"
+            AllowDrop="True"
+            Background="LightGray"
+            Drop="txtFolderPath_Drop"
+            FontSize="16"
+            IsReadOnly="True"
+            PreviewDragOver="txtFolderPath_PreviewDragOver"
+            Text="拖拽文件夹至此">
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+
+                    <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border
+                                    BorderBrush="LightGray"
+                                    BorderThickness="1"
+                                    CornerRadius="2">
+                                    <ScrollViewer x:Name="PART_ContentHost" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <CheckBox
+                Name="UserEnvironmentCheckBox"
+                Grid.Column="0"
+                Margin="50,10,0,0"
+                VerticalAlignment="Center"
+                Content="用户环境" />
+            <CheckBox
+                Name="SystemEnvironmentCheckBox"
+                Grid.Column="1"
+                Margin="0,10,0,0"
+                VerticalAlignment="Center"
+                Content="系统环境" />
+        </Grid>
+
+        <Button
+            Name="AddPathButton"
+            Margin="10"
+            VerticalAlignment="Bottom"
+            Click="AddPathButton_Click"
+            Content="确定添加" />
+    </StackPanel>
+</Window>
